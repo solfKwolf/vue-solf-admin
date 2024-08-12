@@ -2,6 +2,9 @@ import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
+import tailwindcss from 'tailwindcss'
+import autoprefixer from 'autoprefixer'
+
 
 // https://vitejs.dev/config/
 const root = process.cwd()
@@ -22,6 +25,11 @@ export default defineConfig({
         replacement: `${pathResolve('src')}/`
       }
     ]
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer],
+    },
   },
   plugins: [
     vue(),

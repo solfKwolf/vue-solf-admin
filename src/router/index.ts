@@ -7,9 +7,12 @@ import type { App } from 'vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/", // 默认路由 home页面
-    component: () => import("../views/home/index.vue"),
+    component: () => import("@/views/home/index.vue"),
   },
-
+  {
+    path: "/login", // 默认路由 home页面
+    component: () => import("@/views/basic/login.vue"),
+  },
 ];
 
 
@@ -17,6 +20,7 @@ const router = createRouter({
   history: createWebHashHistory(),
   strict: true,
   routes: routes,
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
 
