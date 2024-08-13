@@ -10,8 +10,8 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/home/index.vue"),
   },
   {
-    path: "/login", // 默认路由 home页面
-    component: () => import("@/views/basic/login.vue"),
+    path: "/auth", // 默认路由 home页面
+    component: () => import("@/views/basic/auth.vue"),
   },
 ];
 

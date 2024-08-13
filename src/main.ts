@@ -6,7 +6,10 @@ import { setupStore } from '@/store'
 import App from './App.vue'
 
 // 引入全局样式
-import '@/styles/index.css'
+import '@/style/index.css'
+
+import ElementPlus from 'element-plus'
+import 'element-plus/dist/index.css'
 
 // create App
 async function startApp() {
@@ -15,6 +18,8 @@ async function startApp() {
   setupStore(app)
   // 配置路由
   setupRouter(app)
+  // 配置ElementPlus
+  app.use(ElementPlus)
 
   app.mount('#app')
 }
