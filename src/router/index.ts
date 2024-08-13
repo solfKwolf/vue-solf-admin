@@ -12,6 +12,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/auth", // 默认路由 home页面
     component: () => import("@/views/basic/auth.vue"),
+    children: [
+      {
+        path: "login",
+        component: () => import("@/views/basic/modules/login.vue"),
+      }
+    ]
   },
 ];
 
