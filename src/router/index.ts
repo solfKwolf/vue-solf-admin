@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import type { RouteRecordRaw } from 'vue-router'
 import type { App } from 'vue'
+import { createRouterGuard } from './guard'
 
 
 // 1. 配置路由
@@ -8,6 +9,10 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: "/", // 默认路由 home页面
     component: () => import("@/views/home/index.vue"),
+  },
+  {
+    path: "/test", // 默认路由 home页面
+    component: () => import("@/views/test/index.vue"),
   },
   {
     path: "/auth", // 默认路由 home页面
@@ -29,9 +34,12 @@ const router = createRouter({
   scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
+createRouterGuard(router)
+
 
 export const setupRouter = (app: App<Element>) => {
   app.use(router)
 }
+
 
 export default router

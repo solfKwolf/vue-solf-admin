@@ -14,7 +14,9 @@
 
 <script setup lang="ts">
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router"
 
+const router = useRouter()
 const loading = ref(false)
 const form = reactive({
   username: "",
@@ -23,5 +25,6 @@ const form = reactive({
 
 const submit = () => {
   console.log("submit");
+  router.push("/test");
 }
 </script>
