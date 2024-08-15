@@ -8,6 +8,7 @@ import { createRouterGuard } from './guard'
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/", // 默认路由 home页面
+    name: 'Root',
     component: () => import("@/views/home/index.vue"),
   },
   {
@@ -16,10 +17,12 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: "/auth", // 默认路由 home页面
+    name: 'Authentication',
     component: () => import("@/views/basic/auth.vue"),
     children: [
       {
         path: "login",
+        name: 'Login',
         component: () => import("@/views/basic/modules/login.vue"),
       }
     ]
