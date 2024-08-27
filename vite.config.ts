@@ -17,6 +17,13 @@ function pathResolve(dir: string) {
 export default defineConfig({
   server: {
     host: true,
+    proxy: {
+      '/api': {
+        target: 'http://192.168.1.2:7001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    }
   },
   resolve: {
     alias: [

@@ -25,7 +25,6 @@ function setupCommonGuard(router: Router) {
 function setupAccessGuard(router: Router) {
   router.beforeEach(async (to, from) => {
     const accessStore = useAccessStore();
-    console.log(accessStore.accessToken);
     if(coreRouteNames.includes(to.name as string)) {
       return true;
     }

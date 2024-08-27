@@ -15,6 +15,9 @@
 <script setup lang="ts">
 import { reactive, ref } from "vue";
 import { useRouter } from "vue-router"
+import { loginApi } from "@/api"
+import { ElMessage } from "element-plus";
+import { useAccessStore } from "@/store"
 
 const router = useRouter()
 const loading = ref(false)
@@ -22,9 +25,22 @@ const form = reactive({
   username: "",
   password: "",
 });
+const accessStore = useAccessStore();
 
-const submit = () => {
-  console.log("submit");
-  router.push("/test");
+const submit = async () => {
+  loading.value = true;
+  try {
+    const { data } = await loginApi({
+      ...form
+    })
+    accessStore.setAccessToken(data.token);
+    ElMessage({
+      type: "success",
+      message: "登录成功"
+    })
+    router.push("/");
+  } finally {
+    loading.value = false;
+  }
 }
 </script>

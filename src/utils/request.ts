@@ -1,6 +1,6 @@
 import axios from "axios";
 import type { InternalAxiosRequestConfig, AxiosResponse } from "axios";
-import { ElMessage, ElMessageBox } from "element-plus";
+import { ElMessage } from "element-plus";
 
 const errorCode: Record<string, string> = {
 	401: '认证失败，无法访问系统资源',
@@ -17,7 +17,7 @@ const instance = axios.create({
     "Content-Type": "application/json;charset=utf-8",
   },
   // 默认超时时间
-  timeout: 10_000,
+  timeout: 60000,
 });
 
 // 请求拦截
@@ -49,7 +49,7 @@ instance.interceptors.response.use(
     } else if (code === 601) {
       ElMessage({ message: msg, type: 'warning' });
 			return Promise.reject('error');
-    } else if (code === 200) {
+    } else if (code !== 200) {
       ElMessage({ message: msg, type: 'error' });
 			return Promise.reject('error');
     } else {
@@ -69,3 +69,5 @@ instance.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+export default instance;
