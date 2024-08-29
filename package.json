@@ -9,7 +9,8 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "vue-tsc --noEmit --skipLibCheck"
   },
   "keywords": [
     "vue",
